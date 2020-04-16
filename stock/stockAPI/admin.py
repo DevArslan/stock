@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import stockAPIData, resourcesData
+from .models import stockAPIData
 
 
 admin.site.register(stockAPIData)
-admin.site.register(resourcesData)
