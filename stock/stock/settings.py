@@ -15,8 +15,7 @@ from django.db.backends.mysql.base import DatabaseWrapper
 DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATE_INPUT_FORMATS = ('%d-%m-%Y')
-USE_L10N = True
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -82,7 +81,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'stock.wsgi.application'
 
-
+REST_FRAMEWORK = {
+    "DATE_INPUT_FORMATS": ["%d-%m-%Y"],
+}
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -131,16 +132,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-GB'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = False
 
-USE_L10N = True
-
+USE_L10N = False
 USE_TZ = True
 
+DATE_INPUT_FORMATS = ['%d-%m-%Y','%Y-%m-%d']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
