@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from django.db.backends.mysql.base import DatabaseWrapper
+DatabaseWrapper.data_types['DateTimeField'] = 'datetime' # fix for MySQL 5.5
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATE_INPUT_FORMATS = ('%d-%m-%Y')
@@ -61,15 +62,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_RENDERER_CLASSES': [
-#         'rest_framework.renderers.JSONRenderer',
-#     ],
-#     'DEFAULT_PARSER_CLASSES': [
-#         'rest_framework.parsers.JSONParser',
-#     ]
-# }
-
 ROOT_URLCONF = 'stock.urls'
 
 TEMPLATES = [
@@ -96,14 +88,26 @@ WSGI_APPLICATION = 'stock.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'resources',
-        'USER': 'postgres',
-        'PASSWORD': 'Direling2017',
+        'USER': 'root',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'resources',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Direling2017',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+# POSTGRESQL DB SETTINGS
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

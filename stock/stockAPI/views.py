@@ -22,8 +22,8 @@ class resourcesDataViewSet(APIView):
         return Response()
     
     def put(self, request, *args, **kwargs):
-        IDselect = request.data.get('Id')
-        queryset = stockAPIData.objects.get( Id = IDselect)
+        IDselect = request.data.get('id')
+        queryset = stockAPIData.objects.get( id = IDselect)
         serializer = stockAPIDataSerializer(instance=queryset, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -31,8 +31,8 @@ class resourcesDataViewSet(APIView):
     
 
     def delete(self, request, *args, **kwargs):
-        IDselect = request.data.get('Id')
-        queryset = stockAPIData.objects.get( Id = IDselect)
+        IDselect = request.data.get('id')
+        queryset = stockAPIData.objects.get( id = IDselect)
         queryset.delete()
         return Response()
 
